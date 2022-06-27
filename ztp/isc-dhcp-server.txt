@@ -1,0 +1,6 @@
+# edit /etc/default/isc-dhcp-server
+
+INTERFACESV4="eth1"
+
+# sudo service isc-dhcp-server start
+# sudo service isc-dhcp-server status

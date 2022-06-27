@@ -2,17 +2,20 @@
 
 # option definitions common to all supported networks...
 option domain-name "cisco.com";
-option domain-name-servers 171.70.168.183, 64.102.6.247;
+option domain-name-servers 1.1.1.1, 8.8.8.8;
 
+# lease timers
 default-lease-time 600;
 max-lease-time 7200;
+
+# declare subnets
 subnet 192.168.30.0 netmask 255.255.255.0 {
 }
-.
 
+# host specific bindings and pointers
 host PE125 {
   hardware ethernet 00:50:56:85:da:18;
   fixed-address 192.168.30.125;
   option routers 192.168.30.1;
-  filename "http://192.168.30.101/ztp/pe125-script.sh";
+  filename "http://192.168.30.101/ZTP/pe125-script.sh";
 }

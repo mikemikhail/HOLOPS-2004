@@ -17,12 +17,18 @@ echo ' group root-lr' >> $config_file
 echo ' group cisco-support' >> $config_file
 echo ' secret cisco' >> $config_file
 echo 'interface MgmtEth0/RP0/CPU0/0' >> $config_file
+echo ' vrf Mgmt-intf' >> $config_file
 echo ' ipv4 address 198.18.1.114 255.255.255.0' >> $config_file
+echo ' no shutdown' >> $config_file
+echo 'interface GigabitEthernet0/0/0/0' >> $config_file
+echo ' no shutdown' >> $config_file
+echo 'interface GigabitEthernet0/0/0/1' >> $config_file
 echo ' no shutdown' >> $config_file
 echo 'netconf-yang agent' >> $config_file
 echo ' ssh' >> $config_file
 echo 'ssh server v2' >> $config_file
 echo 'ssh server netconf vrf default' >> $config_file
+echo 'ssh server netconf vrf Mgmt-intf' >> $config_file
 xrapply_with_reason 'Initial ZTP config' $config_file
 
 if [[ -z $(xrcmd "show crypto key mypubkey rsa") ]]; then
